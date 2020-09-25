@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="RoundProgress" />
+		<Option pch_mode="2" />
+		<Option default_target="WIN" />
+		<Option compiler="gcc" />
+		<Option show_notes="0">
+			<notes>
+				<![CDATA[/*
+    the programme are building from ovan , this software is buildin
+    for www.immortal-galaxy.e3b.org , contact me in igz@darktechnologie.com
+    it's msn , dont receiver any mail
+ */]]>
+			</notes>
+		</Option>
+		<Build>
+			<Target title="OSX">
+				<Option platforms="Mac;" />
+				<Option output="app/iges.osx" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="app" />
+				<Option object_output=".obj" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+			</Target>
+			<Target title="UNIX-32">
+				<Option platforms="Unix;" />
+				<Option output="app/iges.i386" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="app" />
+				<Option object_output=".obj" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-march=athlon64" />
+				</Compiler>
+				<Linker>
+					<Add option="-lpthread" />
+					<Add library="GL" />
+					<Add library="Xxf86vm" />
+					<Add library="libIrrlicht.a" />
+					<Add directory="../../../Library/lib/UNIX/x86-32" />
+				</Linker>
+			</Target>
+			<Target title="UNIX-64">
+				<Option platforms="Unix;" />
+				<Option output="round-progress.i686" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="app" />
+				<Option object_output=".obj" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-march=athlon-fx" />
+					<Add option="-march=athlon64" />
+					<Add option="-march=opteron" />
+					<Add option="-march=k8" />
+					<Add option="-march=core2" />
+				</Compiler>
+				<Linker>
+					<Add option="-lpthread" />
+					<Add library="GL" />
+					<Add library="Xxf86vm" />
+					<Add library="libIrrlicht.a" />
+					<Add library="libX11" />
+					<Add library="libdl" />
+					<Add directory="../../../../Library/lib/UNIX/x86-64" />
+				</Linker>
+			</Target>
+			<Target title="WIN">
+				<Option platforms="Windows;" />
+				<Option output="app/iges.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="app" />
+				<Option object_output=".obj" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Linker>
+					<Add option="-gmon" />
+					<Add library="libIrrlicht.a" />
+					<Add library="libpthreadGCE2.a" />
+					<Add library="libwsock32.a" />
+					<Add library="libBulletSoftBody.a" />
+					<Add library="libBulletMultiThreaded.a" />
+					<Add library="libBulletDynamics.a" />
+					<Add library="libBulletCollision.a" />
+					<Add library="libLinearMath.a" />
+					<Add library="libvorbisfile.a" />
+					<Add library="libvorbis.a" />
+					<Add library="libogg.a" />
+					<Add library="libopenal.a" />
+					<Add directory="../../../Library/lib/WIN" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-std=c++11" />
+			<Add option="-pg" />
+			<Add option="-g" />
+			<Add option="-Wmaybe-uninitialized" />
+			<Add option="-Wuninitialized" />
+			<Add option="-Wunused-local-typedefs" />
+			<Add option="-Wunused-label" />
+			<Add option="-Wreturn-type" />
+			<Add option="-Wdelete-non-virtual-dtor" />
+			<Add option="-Wformat" />
+			<Add option="-Wunsafe-loop-optimizations" />
+			<Add option="-Wsuggest-attribute=pure" />
+			<Add option="-Wsuggest-attribute=const" />
+			<Add option="-Wsuggest-attribute=noreturn" />
+			<Add option="-finline-functions" />
+			<Add option="-finline-functions-called-once" />
+			<Add option="-fcrossjumping" />
+			<Add option="-falign-functions" />
+			<Add option="-falign-jumps" />
+			<Add option="-falign-loops" />
+			<Add option="-falign-labels" />
+			<Add option="-freorder-blocks" />
+			<Add option="-freorder-blocks-and-partition" />
+			<Add option="-fprefetch-loop-arrays" />
+			<Add option="-fpeel-loops" />
+			<Add option="-funswitch-loops" />
+			<Add option="-fmove-loop-invariants" />
+			<Add option="-funroll-loops" />
+			<Add option="-DIRRLICHT_SUPPORT" />
+			<Add directory="../../../../Library/include/irrlicht" />
+			<Add directory="../../../../Library/include/" />
+		</Compiler>
+		<Linker>
+			<Add option="-pg" />
+			<Add option="-lm" />
+		</Linker>
+		<Unit filename="CGUIRoundProgress.cpp" />
+		<Unit filename="CGUIRoundProgress.h" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion>
+				<search_path add="codes" />
+			</code_completion>
+			<debugger />
+			<envvars />
+			<AutoVersioning>
+				<Scheme minor_max="10" build_max="0" rev_max="0" rev_rand_max="10" build_times_to_increment_minor="100" />
+				<Settings autoincrement="1" date_declarations="1" update_manifest="1" do_auto_increment="0" ask_to_increment="0" language="C++" svn="0" svn_directory=" " header_path="version.h" />
+				<Changes_Log show_changes_editor="0" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
+				<Code header_guard="VERSION_H" namespace="AutoVersion" prefix=" " />
+			</AutoVersioning>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
