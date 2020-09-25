@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Camera" />
+		<Option pch_mode="2" />
+		<Option default_target="WIN" />
+		<Option compiler="gcc" />
+		<Option show_notes="0">
+			<notes>
+				<![CDATA[/*
+    the programme are building from ovan , this software is buildin
+    for www.immortal-galaxy.e3b.org , contact me in igz@darktechnologie.com
+    it's msn , dont receiver any mail
+ */]]>
+			</notes>
+		</Option>
+		<Build>
+			<Target title="OSX">
+				<Option platforms="Mac;" />
+				<Option output="camera.osx" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="app" />
+				<Option object_output=".obj" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=c++11" />
+					<Add option="-pg" />
+					<Add option="-g" />
+					<Add option="-DIRRLICHT_SUPPORT" />
+					<Add directory="../../../Library/include" />
+					<Add directory="../../../Library/include/Bullet" />
+					<Add directory="../../../Library/include/irrlicht" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-pg" />
+					<Add option="-lm" />
+				</Linker>
+			</Target>
+			<Target title="UNIX-32">
+				<Option platforms="Unix;" />
+				<Option output="camera.i386" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="app" />
+				<Option object_output=".obj" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-march=athlon64" />
+				</Compiler>
+				<Linker>
+					<Add option="-lpthread" />
+					<Add option="-lSDL_mixer" />
+					<Add library="GL" />
+					<Add library="Xxf86vm" />
+					<Add library="libIrrlicht.a" />
+					<Add directory="../../../Library/lib/UNIX/x86-32" />
+				</Linker>
+			</Target>
+			<Target title="UNIX-64">
+				<Option platforms="Unix;" />
+				<Option output="camera.i686" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="app" />
+				<Option object_output=".obj" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-march=athlon64" />
+					<Add option="`pkg-config sdl --cflags`" />
+				</Compiler>
+				<Linker>
+					<Add option="-lpthread" />
+					<Add option="-lavformat" />
+					<Add option="-lavcodec" />
+					<Add option="-lavutil" />
+					<Add option="-lswscale" />
+					<Add option="-lavdevice" />
+					<Add option="-lavfilter" />
+					<Add option="-ltheora" />
+					<Add option="`pkg-config sdl --libs`" />
+					<Add library="GL" />
+					<Add library="Xxf86vm" />
+					<Add library="vorbisfile" />
+					<Add library="openal" />
+					<Add library="vorbis" />
+					<Add library="ogg" />
+					<Add library="libX11" />
+					<Add library="libdl" />
+					<Add library="libIrrlicht.a" />
+					<Add directory="../../../Library/lib/UNIX/x86-64" />
+				</Linker>
+			</Target>
+			<Target title="WIN">
+				<Option platforms="Windows;" />
+				<Option output="camera.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="app" />
+				<Option object_output=".obj" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-march=athlon64" />
+				</Compiler>
+				<Linker>
+					<Add option="-lSDL" />
+					<Add option="-lpthread" />
+					<Add library="GL" />
+					<Add library="engine" />
+					<Add library="Xxf86vm" />
+					<Add library="libIrrlicht.a" />
+					<Add library="libBulletSoftBody.a" />
+					<Add library="libBulletMultiThreaded.a" />
+					<Add library="libBulletDynamics.a" />
+					<Add library="libBulletCollision.a" />
+					<Add library="libLinearMath.a" />
+					<Add library="vorbisfile" />
+					<Add library="openal" />
+					<Add library="vorbis" />
+					<Add library="ogg" />
+					<Add directory="../../../Library/lib/UNIX/x86-64" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-std=c++11" />
+			<Add option="-pg" />
+			<Add option="-g" />
+			<Add option="-DIRRLICHT_SUPPORT" />
+			<Add directory="../../../Library/include" />
+			<Add directory="../../../Library/include/Bullet" />
+			<Add directory="../../../Library/include/irrlicht" />
+		</Compiler>
+		<Linker>
+			<Add option="-pg" />
+			<Add option="-lm" />
+		</Linker>
+		<Unit filename="cguivideo.cpp" />
+		<Unit filename="cguivideo.h" />
+		<Unit filename="gameintro.cpp" />
+		<Unit filename="gameintro.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="svideo.cpp" />
+		<Unit filename="svideo.h" />
+		<Extensions>
+			<code_completion>
+				<search_path add="codes" />
+			</code_completion>
+			<debugger />
+			<envvars />
+			<AutoVersioning>
+				<Scheme minor_max="10" build_max="0" rev_max="0" rev_rand_max="10" build_times_to_increment_minor="100" />
+				<Settings autoincrement="1" date_declarations="1" update_manifest="0" do_auto_increment="0" ask_to_increment="0" language="C++" svn="0" svn_directory=" " header_path="version.h" />
+				<Changes_Log show_changes_editor="0" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
+				<Code header_guard="VERSION_H" namespace="AutoVersion" prefix=" " />
+			</AutoVersioning>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
