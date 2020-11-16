@@ -1,31 +1,14 @@
 #ifndef __C_GUI_COLOR_PICKER_HEADER__
 #define __C_GUI_COLOR_PICKER_HEADER__
-
+ 
 #include <irrlicht/IGUIElement.h>
 #include <irrlicht/S3DVertex.h>
-
-
-/**
- * Copyright (C) <2014> <Jehan-antoine vayssade>
- * Ovan/Magun contact on irrlicht-fr.org or ovan@sleek-think.ovh
- *
- * This software is provided 'as-is', without any express or implied
- * warranty.  In no event will the authors be held liable for any damages
- * arising from the use of this software.
- *
- * Permission is granted to anyone to use this software for any purpose,
- * including commercial applications, and to alter it and redistribute it
- * freely, subject to the following restrictions:
- *
- * 1. The origin of this software must not be misrepresented; you must not
- *    claim that you wrote the original software. If you use this software
- *    in a product, an acknowledgment in the product documentation would be
- *    appreciated but is not required.
- * 2. Altered source versions must be plainly marked as such, and must not be
- *    misrepresented as being the original software.
- * 3. This notice may not be removed or altered from any source distribution.
-**/
-
+ 
+// Copyright (C) <2014> <Jehan-antoine vayssade>
+// Ovan/Magun contact on irrlicht-fr.org or ovan@sleek-think.ovh
+// Code is under the zlib license (same as Irrlicht)
+// For conditions of distribution and use, see copyright notice in irrlicht.h
+ 
 namespace irr
 {
     namespace gui
@@ -33,42 +16,63 @@ namespace irr
         class IGUIButton;
         class IGUIStaticText;
         class IGUIScrollBar;
-
+       
         class CGUIColorPicker : public IGUIElement
         {
             public:
-                CGUIColorPicker(IGUIEnvironment *environment, IGUIElement *parent, s32 id = 0) noexcept;
+                CGUIColorPicker(IGUIEnvironment *environment, IGUIElement *parent, s32 id = 0, bool useAdvenced = true) noexcept;
                 ~CGUIColorPicker() noexcept;
 
+                virtual void setEnabled(bool);
                 virtual void setRelativePosition(const core::recti &r);
 
                 virtual bool OnEvent(const SEvent&) noexcept;
                 virtual void updateAbsolutePosition();
 
+                virtual void setAdvenced(bool) noexcept;
+                virtual bool getAdvenced() const noexcept;
+
                 virtual void setPickedColor(const video::SColor&) noexcept;
                 virtual const video::SColor& getPickedColor() const noexcept;
+
+                virtual void setSelectedColor(const video::SColor&) noexcept;
+                virtual const video::SColor& getSelectedColor() const noexcept;
 
                 virtual void setBackgroundColor(const video::SColor&) noexcept;
                 virtual const video::SColor& getBackgroundColor() const noexcept;
 
+                IGUIButton *getCloseButton() const noexcept;
+                IGUIButton *getExtendButton() const noexcept;
+
                 virtual void draw();
             protected:
-                bool isGradient, isColor, isInside;
+                virtual void setScrollValueHSV(bool set, int h, int s, int v) noexcept;
+                virtual void setScrollValueRGB(bool set, int r, int g, int b) noexcept;
+                virtual void updateFromScroll(bool HsvOrRgb) noexcept;
+
+                virtual void recalculateAdvenced() noexcept;
                 virtual void recalculatePickedColor() noexcept;
+
                 virtual void createAlphaTexture() noexcept;
                 virtual void createGradientTexture() noexcept;
             protected:
-                IGUIButton      *close;
-                IGUIScrollBar   *scroll;
-                video::ITexture *img[2];
-            protected:
-                video::SColor    pickcolor, color;
-                video::SColor    background, white, black, alpha;
-                core::recti      box, pickbox, gradient;
+                bool isGradient, isColor, isInside,
+                     isExtended, useAdvenced;
+
+                int colorpos;
                 core::vector2di  pickpos;
-                int              colorpos;
+
+                video::SColor pickcolor, selectcolor, color;
+                video::SColor background, white, black, alpha;
+                core::recti   box, selectbox, pickbox, gradient;
+
+                IGUIButton      *close, *extend;
+                IGUIScrollBar   *scroll;
+                IGUIScrollBar   *sb[6];
+                IGUIStaticText  *tx[6][2];
+                video::ITexture      *img[2];
         };
     }
 }
-
+ 
 #endif
